@@ -1,0 +1,584 @@
+/* importing for font-awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --box-color: #ffa4db;
+  --box-shadow-color: rgba(137, 135, 135, 0.5);
+  --main-gradient: linear-gradient(0deg, rgba(220,149,149,1) 0%, rgba(244,5,5,0.94) 0%, rgba(244,129,5,0.94) 50%, rgba(10,244,5,0.94) 100%);
+  --whole-background: linear-gradient(45deg, rgba(156,149,220,1) 0%, rgba(193,154,183,1) 35%, rgba(244,5,182,0.94) 100%);
+  --header-gradient: linear-gradient(45deg, rgba(220,149,149,1) 0%, rgba(142,96,241,0.9) 0%, rgba(156,145,251,1) 16%, rgba(10,40,230,1) 32%, rgba(14,234,72,1) 48%, rgba(240,241,6,0.9) 64%, rgba(236,179,34,1) 80%, rgba(250,9,9,1) 100%, rgba(10,244,5,0.9) 100%);
+}
+/* for all input box excluding radio input */
+input:not([type="radio"]):hover,input:not([type="radio"]):hover +input{
+  box-shadow: 0 0 5px blue;
+}
+input:not([type="radio"]):focus,input:not([type="radio"]):focus +input{
+  box-shadow: 0 0 5px blue;
+}
+/* for main page background in light mode */
+.App{
+  background-color: rgb(122, 250, 184);
+}
+/* for dark mode */
+#black{
+  background-color: black;
+}
+/* for the main component containing various forms and boxes */
+main{
+  position: relative;
+  min-height: 100vh;
+  padding-top: 40px;
+}
+#black main{
+  background: none;
+}
+/* for theme switch button */
+.button-dark{
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 50px;
+  height: 20px;
+  background-color: gray;
+}
+.black{
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 15px;
+  height: 15px;
+  background-color: white;
+}
+.black:hover{
+  cursor: pointer;
+}
+/* clicking the theme switch button will change the classnmae of div and change the div position 
+with the result like animation of button moving form left to right or right to left */
+.white{
+  position: absolute;;
+  top: 3px;
+  right: 3px;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+}
+.white:hover{
+  cursor: pointer;
+}
+/* main navbar */
+header h1 {
+  color: red;
+  padding: 20px 10px;
+  text-align: center;
+  animation-duration: 3s; 
+  animation-delay: 1s;
+  transition: ease-in-out;
+}
+header h1.drop{
+  animation-name: drop;
+}
+/* animation drop will display dropping of the header */
+@keyframes drop {
+  0%{transform: translateY(-200px);}
+  50%{transform: translateY(20px);}
+  100%{transform: translateY(0);}  
+}
+header p{
+  position: absolute;
+  top: 8px;
+  right: 85px;
+}
+/* in small screen size, switch theme text is resized and hide under 375px screen size */
+@media screen and (max-width: 450px) {
+  header p{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 375px) {
+  header p{
+    display: none;
+  }
+}
+/* #black is for theme switch. After switching dark theme, the background color is black
+text-color white is suitable for dark backgrounds */
+#black header p{
+  color: white;
+}
+#black header h1{
+  background: var(--header-gradient);
+  background-clip: text;
+  color: transparent;
+  background-size: 300% 300%;
+  animation: darktheme 3s 0.5s ease-in-out infinite both;
+}
+#black header h1.drop{
+  animation-name: drop;
+}
+/* darktheme animation is for textcolor animation during dark theme.  */
+/* during dark theme, the header color will change with time */
+@keyframes darktheme {
+  0%{background-position: 0% 50%;}
+  50%{background-position: 100% 50%;}
+  100%{background-position: 0% 50%;}
+}
+.navbar {
+  background: var(--whole-background);
+  width: 100%;
+  border-top: 2px solid var(--navbar-color);
+  border-bottom: 2px solid var(--navbar-color);
+}
+.header ul li{
+  display: inline-block;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+/* hovering the list will lower the position of the list */
+.header ul li:hover{
+  transform: scale(1.03);
+  transform: translateY(10%);
+}
+/* active is classname for list which are clicked. The clicked list will be underlined blue and text will be colored blue */
+.header ul li.active{
+  color: navy;
+  border-bottom: 4px solid blue;
+}
+@media screen and (max-width: 350px) {
+  .header ul li{
+    display: block;
+  }
+  .header ul li.active{
+    border-bottom: none;
+  }
+}
+
+/* main content animation*/
+/* the words in the background will appear and disappear over time */
+main div.mainAnimation1, main div.mainAnimation2, main div.mainAnimation3, main div.mainAnimation4, main div.mainAnimation5, main div.mainAnimation6, main div.mainAnimation7 p{
+  z-index: 1;
+  font-size: 2rem;
+}
+main div.mainAnimation1 p{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  background: var(--main-gradient);
+  background-clip: text;
+  color: transparent;
+  transform: rotateZ(-10deg);
+}
+
+main div.mainAnimation2 p{
+  position: absolute;
+  top: 70%;
+  left: 20%;
+  background: var(--main-gradient);
+  background-clip: text;
+  color: transparent;
+  transform: rotateZ(-10deg);
+}
+
+main div.mainAnimation3 p{
+  position: absolute;
+  top: 5%;
+  right: 20%;
+  background: var(--main-gradient);
+  background-clip: text;
+  color: transparent;
+  transform: rotateZ(-10deg);
+}
+
+main div.mainAnimation4 p{
+  position: absolute;
+  top: 50%;
+  left: 1%;
+  background: var(--main-gradient);
+  background-clip: text;
+  color: transparent;
+  transform: rotateZ(-10deg);
+}
+
+main div.mainAnimation5 p{
+  position: absolute;
+  top: 70%;
+  right: 10%;
+  background: var(--main-gradient);
+  background-clip: text;
+  color: transparent;
+  transform: rotateZ(-10deg);
+}
+
+main div.mainAnimation6 p{
+  position: absolute;
+  top: 40%;
+  right: 1%;
+  background: var(--main-gradient);
+  background-clip: text;
+  color: transparent;
+  transform: rotateZ(-10deg);
+}
+
+main div.mainAnimation7 p{
+  position: absolute;
+  top: 45%;
+  right: 45%;
+  background: var(--main-gradient);
+  background-clip: text;
+  color: transparent;
+  transform: rotateZ(-10deg);
+}
+
+.todoAnimation{
+  opacity: 1;
+  animation: todoWord 9s ease-in-out infinite both;
+}
+
+.registerAnimation{
+  opacity: 0;
+  animation: registerWord 9s ease-in-out infinite both;
+}
+
+.temperatureAnimation{
+  opacity: 0;
+  animation: temperatureWord 9s ease-in-out infinite both;
+}
+
+@keyframes todoWord {
+  0%{opacity: 1;}
+  20%{opacity: 0;}
+  87%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
+@keyframes registerWord {
+  0%{opacity: 0;}
+  20%{opacity: 0}
+  33%{opacity: 1;}
+  53%{opacity: 0;}
+  100%{opacity: 0;}
+}
+
+@keyframes temperatureWord {
+  0%{opacity: 0;}
+  53%{opacity: 0;}
+  67%{opacity: 1;}
+  87%{opacity: 0;}
+  100%{opacity: 0;}
+}
+
+/* to do form */
+/* .todo is classname for the div container of the whole todo list */
+.todo{
+  width: 300px;
+  margin: 40px auto;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background-color: #ff9dd8;
+  box-shadow: 0px 0px 1px 2px var(--box-shadow-color);
+  position: relative;
+  z-index: 2;
+  animation: appear 1s 0.5s ease-in-out both;
+}
+/* appear animation will show appearance of the box from bottom to center */
+@keyframes appear {
+  from{transform: translateY(500px);}
+  to{transform: translateY(0);}
+}
+
+@media screen and (max-width: 350px){
+  .todo{
+    width: 98%;
+  }
+}
+#black .todo{
+  background-color: white;
+}
+i.fa-list{
+  margin-right: 0.5em;
+}
+.todo h3, .todo input, .todo button, .todo div{
+  display: block;
+  padding: 1em;
+  margin: auto;
+}
+.todo h3 {
+  text-align: center;
+  font-size: 26px;
+}
+.todo h3.list-title{
+  font-size: 20px;
+  padding: 0.5em;
+}
+.todo input {
+  width: 90%;
+}
+input{
+  border-radius: 5px;
+}
+.todo input:focus {
+  outline: none;
+}
+/* if mb-12 class is added, margin-bottom is added */
+.todo .mb-12 {
+  margin-bottom: 12px;
+}
+/* inside the whole todo there are div containers which carry todo list and trash button */
+.todo div{
+  margin: 1em;
+  padding: 0;
+  border-top: 1px solid black;
+}
+/* inside the above div, there is span with class name flex carrying todo list and trash button
+the above div is included for ease of styling */
+.todo div .flex {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 8px 0;
+  animation: addTodo 1s ease-in-out both;
+}
+/* adding the todo list will display todolist from input bar to todo list with animation */
+@keyframes addTodo {
+  from{transform: translateY(-100px);}
+  to{transform: translateY(0);}
+}
+.todo div .flex p {
+  word-break: break-all;
+  line-height: 1em;
+}
+i.fa-trash{
+  color: red;
+  line-height: 1em;
+}
+.todo button {
+  margin-left: 5%;
+  background: blue;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+.todo button:hover{
+  transform: scale(1.04);
+  background-color: rgb(7, 7, 120);
+  cursor: pointer;
+}
+
+/* registration-form css */
+/* .side is for the whole div carrying registration form and div containing details of user */
+.side{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 80vh;
+  z-index: 2;
+}
+/* .form is both for registration form and temperature converter form */
+.form{
+  width: 350px;
+  border: 2px solid var(--navbar-color);
+  padding-bottom: 2em;
+  background-color: var(--box-color);
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 2px var(--box-shadow-color);
+  z-index: 2;
+  animation: appear 1s 0.5s ease-in-out both;
+}
+@media screen and (max-width: 375px){
+  .form{
+    width: 98%;
+  }
+}
+#black .form{
+  background-color: white;
+}
+i.fa-user{
+  margin-right: 0.5em;
+}
+h2 {
+  padding: 1.3em 10%;
+  text-align: center;
+}
+/* each form label and input are included in a single div */
+.form div {
+  margin-bottom: 0.8em;
+}
+.form label, .form input, .form button, .form p{
+  display: block;
+  width: 80%;
+}
+.form label, .form p, .form table{
+  padding-left: 10%;
+}
+.form label{
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+.form p {
+  font-size: 13px;
+  color: red;
+}
+.form input, .form button {
+  margin: auto;
+  height: 2em;
+  border-radius: 3px;
+}
+.form input {
+  padding: 14px 14px;
+  border-color: var(--navbar-color);
+}
+.form input:focus {
+  border-color: var(--navbar-color);
+  outline: none;
+}
+/* for color picker */
+div.grid{
+  width: 90%;
+  padding-left: 10%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-auto-rows: minmax(30px 40px);
+}
+/* in small screen size, six color picker role is impossible, so 2 picker boxes are transferred to lower row */
+@media screen and (max-width: 375px) {
+  div.grid{
+    grid-template-areas:
+    "one two three four"
+    "five six seven eight"
+    "nine ten eleven twelve"
+    "thirteen fourteen fifteen sixteen";
+    grid-auto-rows: minmax(30px 40px);
+  }
+  #red{
+    grid-area: one;
+  }
+  #green{
+    grid-area: two;
+  }
+  #blue{
+    grid-area: three;
+  }
+  #yellow{
+    grid-area: four;
+  }
+  #cyan{
+    grid-area: nine;
+  }
+  #magenta{
+    grid-area: ten;
+  }
+  .redtext{
+    grid-area: five;
+  }
+  .greentext{
+    grid-area: six;
+  }
+  .bluetext{
+    grid-area: seven;
+  }
+  .yellowtext{
+    grid-area: eight;
+  }
+  .cyantext{
+    grid-area: thirteen;
+  }
+  .magentatext{
+    grid-area: fourteen;
+  }
+}
+.form button {
+  background: blue;
+  color: white;
+  border: none;
+  font-size: 1em;
+}
+.form button:hover {
+  background-color: rgb(7, 7, 120);
+  transform: scale(1.04);
+  cursor: pointer;
+}
+/* .temperature is classname for temperature form only */
+.temperature{
+  margin: 40px auto;
+  position: relative;
+  z-index: 2;
+}
+i.fa-temperature-quarter{
+  margin-right: 0.5em;
+}
+.temperature h2{
+  font-size: 23px;
+}
+.temperature div .flex{
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+.temperature div .flex input{
+  margin: 0;
+  text-align: right;
+  border-radius: 3px 0 0 3px;
+}
+.temperature div .flex input.fixed{
+  width: 16%;
+  border-radius: 0 3px 3px 0;
+  pointer-events: none;
+}
+/* registration details */
+/* .side is for div containing registration form and div carrying user details
+.account is for div carrying user details */
+.side>div{
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 0px 1px 2px var(--box-shadow-color);
+}
+.side .card{
+  animation: nameCard 3s 0.5s ease-in-out both;
+}
+/* nameCard animation will display namecard with flicking animation */
+@keyframes nameCard {
+  from{transform: rotateY(-90deg);}
+  to{transform: rotateY(-360deg);}
+}
+@media screen and (max-width: 350px){
+  .side>div{
+    width: 98%;
+  }
+}
+/* h3 is for email and phone number */
+.side>div{
+  z-index: 2;
+  position: relative;
+}
+.side>div h3{
+  text-align: center;
+  word-break: break-all;
+  margin-bottom: 0.5em;
+}
+/* h1 is for username */
+.side>div h1{
+  text-align: center;
+  margin-bottom: 1em;
+}
+/* for font-awesome icons */
+.side>div span{
+  display: inline;
+  font-weight: 400;
+  margin-right: 10px;
+}
+/* for red and blue background white color text is suitable */
+#red, #blue{
+  color: white;
+}
+.todo div .flex p span#yellowLighted{
+  background: yellow;
+}
